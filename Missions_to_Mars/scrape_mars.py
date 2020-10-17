@@ -1,7 +1,7 @@
 import pandas as pd
 from splinter import Browser
 from bs4 import BeautifulSoup
-
+import re
 
 def init_browser():
     # @NOTE: Replace the path with your actual path to the chromedriver
@@ -43,7 +43,6 @@ def scrape():
 
     # ## Scraping for Mars Weather - Twitter
 
-    import re
     url = "https://twitter.com/marswxreport?lang=en"
     browser.visit(url)
 
