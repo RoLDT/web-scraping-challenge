@@ -2,6 +2,7 @@ import pandas as pd
 from splinter import Browser
 from bs4 import BeautifulSoup
 import re
+import time
 
 def init_browser():
     # @NOTE: Replace the path with your actual path to the chromedriver
@@ -18,6 +19,8 @@ def scrape():
 
     url = "https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest"
     browser.visit(url)
+
+    browser.is_element_present_by_css("ul.item_list li.slide", wait_time=.5)
 
     html = browser.html
     soup = BeautifulSoup(html, "html.parser")
@@ -46,6 +49,9 @@ def scrape():
     url = "https://twitter.com/marswxreport?lang=en"
     browser.visit(url)
 
+    time.sleep(3)
+
+
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
 
@@ -58,7 +64,7 @@ def scrape():
     except AttributeError:
         pattern = re.compile(r'sol')
         mars_weather = soup.find('span', text=pattern).text
-        mars_weather
+
     
     mars_weather = mars_weather.replace("InSight","").replace("sol", "Sol")
 
@@ -111,7 +117,7 @@ def scrape():
     "featured_image_url":featured_image_url,
     "mars_weather":mars_weather,
     "facts":facts_html,
-    "hemisphre_image_urls":hemisphere_image_urls
+    "hemisphere_image_urls":hemisphere_image_urls
     }
 
     return Mars_Dict

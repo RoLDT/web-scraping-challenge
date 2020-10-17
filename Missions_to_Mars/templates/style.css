@@ -1,0 +1,11 @@
+#hemcol{
+    margin: 10px;
+    width: 30px;
+    height: 40px;
+    max-width: 300px; 
+    max-height: 300px;
+}
+
+body{
+    background-color: blue;
+}

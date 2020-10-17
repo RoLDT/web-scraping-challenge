@@ -9,6 +9,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
+<style>
+    #hemisphere{
+    width: 500px;
+    height: auto;
+    }
+</style>
+
 <body>
   <div class="container fluid">
 
@@ -54,18 +61,18 @@
         <div class="col-md-12">
             <h2 class="text-center">Mars Hemispheres</h2>
             <hr>
-            {% for hemisphere in mars.hemisphere_image_url %}
-                <div>
-                    <div class="col-lg-4">
-                        <div class="card" style="width: 20rem;">
-                            <img class="card-img-top" src="hemisphere.img_url" alt="hemisphereimage">                            
+                <div class= "row">
+                    {% for hemisphere in mars.hemisphere_image_urls %}
+                    <div class="col-md-6">
+                        <div class="card">
+                            <img id="hemisphere" class="card-img-top" src= {{hemisphere.img_url}} alt="hemisphereimage">                            
                             <div class="card-body">
                               <h4 class="card-title">{{ hemisphere.title }}</h4>
                             </div>
                         </div>
                     </div>                    
+                     {% endfor %}
                 </div>
-            {% endfor %}
         </div>
     </div>
 
